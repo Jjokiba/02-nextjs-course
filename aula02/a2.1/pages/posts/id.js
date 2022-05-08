@@ -69,7 +69,7 @@ export default function PostByIdScreen() {
           color: '#F9703E',
         }}
       >
-        <NextLink href={`/02-nextjs-course/`} passHref>
+        <NextLink href={`/`} passHref>
           <a>
             <Text tag="a" styleSheet={{ hover: { textDecoration: 'underline', cursor: 'pointer' } }}>
               Voltar para a home
