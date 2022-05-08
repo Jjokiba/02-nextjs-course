@@ -1,11 +1,11 @@
 import NextLink from 'next/link';
 import { Box, Text, Image } from '@skynexui/components';
-import dados from '../dados.json';
+import dados from '../public/dados.json';
 
 export default function HomeScreen() {
   const infos = {
-    nome: 'Mario Souto',
-    githubUser: 'omariosouto',
+    nome: 'Jikober',
+    githubUser: 'jjokiba',
   }
   const posts = dados.posts;
 
@@ -65,14 +65,16 @@ function Post({ title, content, id }) {
         }
       }}
     >
-      <NextLink href={`posts/${id}`} passHref>
-        <Text
-          tag="a"
-          variant="heading4"
-          styleSheet={{ display:' block', color: '#F9703E', marginBottom: '8px' }}
-        >
-          {title}
-        </Text>
+      <NextLink href={`posts/id?id=${id}`} passHref>
+        <a>
+          <Text
+            tag="a"
+            variant="heading4"
+            styleSheet={{ display:' block', color: '#F9703E', marginBottom: '8px', hover: {cursor:'pointer'} }}
+          >
+            {title}
+          </Text>
+        </a>
       </NextLink>
       <Text>
         {content.substring(0, 140)}...
