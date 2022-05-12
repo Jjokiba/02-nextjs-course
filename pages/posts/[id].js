@@ -3,9 +3,34 @@ import { Box, Text } from '@skynexui/components';
 import { useRouter } from 'next/router';
 import dados from '../../public/dados.json';
 
+export async function getStaticPaths() {
+/* const paths = [
+  {params: {id : '1'}},
+  {params: {id : '2'}},
+  {params: {id : '3'}}
+] */
+  const paths = dados.posts.map((postAtual) => {
+    return {params : {id : `${postAtual.id}`}}
+  });
+
+  return {
+    paths: paths,
+    fallback: false // false or 'blocking'
+  };
+}
+
+export async function getStaticProps(context) {
+  console.log(context);
+  return {
+    props: {
+      id: context.params.id,
+    }, // will be passed to the page component as props
+  }
+}
+
 const posts = dados.posts;
 
-export default function PostByIdScreen() {
+export default function PostByIdScreen(props) {
   const router = useRouter();
   /* const post = {
     title: `Post: [${router.query.id}]`,
@@ -70,11 +95,11 @@ export default function PostByIdScreen() {
         }}
       >
         <NextLink href={`/`} passHref>
-          <a>
+          {/* <a> */}
             <Text tag="a" styleSheet={{ hover: { textDecoration: 'underline', cursor: 'pointer' } }}>
               Voltar para a home
             </Text>
-          </a>
+          {/* </a> */}
         </NextLink>
       </Box>
     </Box>

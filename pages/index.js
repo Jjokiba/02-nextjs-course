@@ -65,8 +65,8 @@ function Post({ title, content, id }) {
         }
       }}
     >
-      <NextLink href={`posts/id?id=${id}`} passHref>
-        <a>
+      <NextLink href={`posts/${id}`} passHref>
+        {/* <a> */}
           <Text
             tag="a"
             variant="heading4"
@@ -74,7 +74,7 @@ function Post({ title, content, id }) {
           >
             {title}
           </Text>
-        </a>
+        {/* </a> */}
       </NextLink>
       <Text>
         {content.substring(0, 140)}...
